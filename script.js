@@ -66,7 +66,7 @@ document.querySelectorAll('img').forEach(img => {
 // Create STAR sparkle on click
 document.addEventListener('click', function(e) {
     const sparkle = document.createElement('div');
-    sparkle.innerHTML = '⭐';
+    sparkle.innerHTML = '✨';
     sparkle.style.cssText = `
         position: fixed;
         left: ${e.clientX}px;
