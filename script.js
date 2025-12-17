@@ -15,8 +15,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// REMOVED PARALLAX EFFECT - No more jumping on scroll
-
 // Cards are already visible - no fade-in animation needed
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.fade-in-card');
@@ -65,16 +63,16 @@ document.querySelectorAll('img').forEach(img => {
     });
 });
 
-// Create sparkle on click
+// Create STAR sparkle on click
 document.addEventListener('click', function(e) {
     const sparkle = document.createElement('div');
-    sparkle.textContent = '✨';
+    sparkle.innerHTML = '⭐';
     sparkle.style.cssText = `
         position: fixed;
         left: ${e.clientX}px;
         top: ${e.clientY}px;
         pointer-events: none;
-        font-size: 24px;
+        font-size: 28px;
         z-index: 9999;
         animation: clickSparkle 1s ease-out forwards;
     `;
@@ -103,55 +101,4 @@ clickStyle.textContent = `
 `;
 document.head.appendChild(clickStyle);
 
-// Add confetti effect when box opens
-setTimeout(() => {
-    createConfetti();
-}, 2800);
-
-function createConfetti() {
-    const colors = ['#FFD700', '#FFA500', '#ec4899', '#a855f7', '#f472b6'];
-    const confettiCount = 50;
-    
-    for (let i = 0; i < confettiCount; i++) {
-        const confetti = document.createElement('div');
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        const randomX = Math.random() * 100;
-        const randomDelay = Math.random() * 0.5;
-        const randomDuration = Math.random() * 2 + 2;
-        
-        confetti.style.cssText = `
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: ${randomColor};
-            left: ${randomX}%;
-            top: -10%;
-            z-index: 9999;
-            border-radius: 50%;
-            animation: confettiFall ${randomDuration}s ease-in ${randomDelay}s forwards;
-            pointer-events: none;
-        `;
-        
-        document.body.appendChild(confetti);
-        
-        setTimeout(() => confetti.remove(), (randomDuration + randomDelay) * 1000 + 100);
-    }
-}
-
-// Confetti falling animation
-const confettiStyle = document.createElement('style');
-confettiStyle.textContent = `
-    @keyframes confettiFall {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(100vh) rotate(720deg);
-            opacity: 0.3;
-        }
-    }
-`;
-document.head.appendChild(confettiStyle);
-
-console.log('🎁 Blyssy Hampers - Website Loaded Successfully!');        
+console.log('🎁 Blyssy Hampers - Website Loaded Successfully!');
